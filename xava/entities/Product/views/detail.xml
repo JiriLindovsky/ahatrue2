@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view xmlns="http://www.openxava.org/view" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openxava.org/view http://www.openxava.org/view.xsd">
+    <meta>
+        <description>Product Detail View</description>
+    </meta>
+    <view-properties>
+        <property name="id" required="true" hidden="true" />
+        <property name="name" required="true" />
+        <property name="description" rows="3" />
+        <property name="price" required="true" />
+    </view-properties>
+    <sections>
+        <section>
+            <section-properties>
+                <property name="id" required="true" hidden="true" />
+                <property name="name" required="true" />
+                <property name="description" rows="3" />
+                <property name="price" required="true" />
+            </section-properties>
+        </section>
+    </sections>
+</view>

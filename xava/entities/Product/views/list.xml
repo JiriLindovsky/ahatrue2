@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view
+    xmlns:xp="http://www.openxava.org/xp"
+    xmlns:xava="http://www.openxava.org/xava"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.openxava.org/xp http://www.openxava.org/xp/xp.xsd">
+
+  <xp:view-title>List Products</xp:view-title>
+
+  <xp:entity class="com.AHAtrading.ahatrue.model" />
+
+  <xp:view id="list" extends="xava/list">
+
+    <xp:view-columns>
+      <xp:view-column property="name" label="Name" />
+      <xp:view-column property="description" label="Description" />
+      <xp:view-column property="price" label="Price" />
+      <xp:view-action icon="/openxava/images/edit.gif" label="Edit"
+        action="Product.edit" />
+      <xp:view-action icon="/openxava/images/remove.gif" label="Remove"
+        action="Product.remove" confirm="Are you sure you want to delete this product?" />
+    </xp:view-columns>
+
+    <xp:view-filters>
+      <xp:view-filter property="name" label="Name" operator="contains" />
+    </xp:view-filters>
+
+    <xp:view-sortings>
+      <xp:view-sorting property="name" label="Name" />
+      <xp:view-sorting property="price" label="Price" />
+    </xp:view-sortings>
+
+    <xp:view-collection>
+      <xp:view-filter-ref filter="search" />
+    </xp:view-collection>
+
+  </xp:view>
+
+  <xp:view-filter id="search" label="Search">
+    <xp:inputText id="name" value="#{criteria.name}" />
+    <xp:button value="Search" icon="/openxava/images/search.gif">
+      <xp:actionListener action="#{search}" />
+    </xp:button>
+  </xp:view-filter>
+
+</xp:view>
+ 
+    
+      
+      
+      
+      
+      

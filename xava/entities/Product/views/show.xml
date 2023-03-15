@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view name="show" extends="default-show">
+  <tab>
+    <group>
+      <label>General Information</label>
+      <column property="id"/>
+      <column property="name"/>
+      <column property="description"/>
+      <column property="price"/>
+    </group>
+    <group>
+      <label>Stock Information</label>
+      <column property="inStock"/>
+      <column property="reorderPoint"/>
+      <column property="reorderQuantity"/>
+    </group>
+  </tab>
+</view>
