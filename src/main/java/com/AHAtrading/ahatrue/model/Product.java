@@ -5,20 +5,33 @@ import javax.persistence.*;
 import org.openxava.annotations.*;
 import com.AHAtrading.ahatrue.annotations.*;
 
+/**
+ * based on book
+ */
 @Entity
+
 @View(name="Simple", members="number, description") 
 public class Product {
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="ID")
+	@ReadOnly
+	@Hidden
+	int number;
 	
-	@Id @Column(length=9)
-	private int number;
-	
-	@Column(length=50) @Required
+	@Column(length=50,name="POPIS")
+	@Required
 	private String description;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@DescriptionsList
 	private Author author;
-		
+
+	@ManyToOne(fetch=FetchType.LAZY)
+	@DescriptionsList
+	private Supplier supplier;
+
 	@ManyToOne( 
 		fetch=FetchType.LAZY,  
 		optional=true)
@@ -26,18 +39,28 @@ public class Product {
 	private Category category;
 	
 	@Column(length=10) @ISBN
+	@Hidden //JL:not used
 	private String isbn;
 			
 	@Stereotype("MONEY")
 	private BigDecimal price;
 		
-	@Stereotype("PHOTO")
-	private byte [] photo;
-		
-	@Stereotype("IMAGES_GALLERY")
+	/*@Stereotype("PHOTO")
+	private byte [] photo;*/
+	@Files
 	@Column(length=32)
-	private String morePhotos;		
-		
+	private String photo;
+
+	/*@Stereotype("IMAGES_GALLERY")
+	@Column(length=32)
+	private String morePhotos;
+	*/ //JL
+
+	@Files // A complete image gallery is available
+	@Column(length=32) // The 32 length string is for storing the key of the gallery
+	String morePhotos; //JL:added
+
+
 	@Stereotype("MEMO")
 	private String remarks;	
 	
@@ -73,11 +96,11 @@ public class Product {
 		this.price = price;
 	}
 
-	public byte[] getPhoto() {
+	public String getPhoto() {//JL:fix type
 		return photo;
 	}
 
-	public void setPhoto(byte[] photo) {
+	public void setPhoto(String photo) {//JL:fix type
 		this.photo = photo;
 	}
 

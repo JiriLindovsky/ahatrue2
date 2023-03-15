@@ -52,7 +52,7 @@ abstract public class CommercialDocument extends Deletable {
 			"quantity, pricePerUnit, amount")
 	private Collection<Detail> details = new ArrayList<Detail>();
 	
-	@Digits(integerDigits=2, fractionalDigits=0)
+	//@Digits(integerDigits=2, fractionalDigits=0)
 	@Required
 	@DefaultValueCalculator(VatPercentageCalculator.class)
 	private BigDecimal vatPercentage;

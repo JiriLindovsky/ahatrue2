@@ -9,7 +9,7 @@ public class SearchInvoiceFromOrderAction
 		super.execute();  
 		int customerNumber = 
 			getPreviousView()  
-				.getValueInt("customer.number");   
+				.getValueInt("customer.number");
 													
 		if (customerNumber > 0) {  	
 			getTab().setBaseCondition("${customer.number} = " + customerNumber);
